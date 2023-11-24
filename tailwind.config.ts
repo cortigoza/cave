@@ -14,7 +14,8 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors:{
-        'cave-brown': '#AB7535'
+        'cave-brown': '#AB7535',
+        'cave-dark': '#262626'
       }
     },
   },

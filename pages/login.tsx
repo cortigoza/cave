@@ -31,14 +31,18 @@ const Login = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-800">
-            <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-lg shadow-lg">
+        <div className="flex items-center justify-center min-h-screen bg-gray-800" style={{ backgroundImage: "url('/image-1.png')" }}>
+            <div className="max-w-md w-full space-y-8 p-10 bg-gray rounded-lg shadow-lg">
                 <div>
-                    <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+                    <h2 className="mt-6 text-5xl text-center">
                         The Cave
                     </h2>
                 </div>
-
+                <div>
+                    <p className="mt-6 text-l">
+                        Inicia sesion para acceder a todas las opciones disponibles
+                    </p>
+                </div>
                 <div className="rounded-md shadow-sm">
                     <div>
                         <label htmlFor="username" className="sr-only">Nombre de usuario</label>

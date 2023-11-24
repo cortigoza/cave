@@ -4,19 +4,19 @@ const prisma = new PrismaClient();
 
 class AuthModel {
     static async getAllUsers() {
-        return await prisma.login.findMany();
+        return await prisma.usuario.findMany();
     }
 
     static async getUserById(id: number) {
-        return await prisma.login.findUnique({
+        return await prisma.usuario.findUnique({
             where: { id },
         });
     }
-    static async authenticateUser(user: string) {
+    static async authenticateUser(nombre: string) {
 
-        const user_exist = await prisma.login.findFirst({
+        const user_exist = await prisma.usuario.findFirst({
             where: {
-                user,
+                nombre,
             },
         });
 
