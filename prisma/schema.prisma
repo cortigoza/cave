@@ -10,16 +10,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Cliente {
+model Usuario {
   id        Int    @id @default(autoincrement())
   nombre    String
-  telefono  String
-  direccion String
-  email     String
+  contrasena  String
+  fecha_creacion String
+  ultima_modificacion String
+  cliente Cliente[]
+  barberia Barberia[]
+  encuesta Encuesta[]
+  cita Cita[]
 }
 
-model Login {
+model Cliente {
   id       Int    @id @default(autoincrement())
-  user     String
-  password String
+  nombre     String
+  telefono String
+  direccion String
+  email String
+  usuario Usuario? @relation(fields: [usuarioId], references: [id])
+  usuarioId Int?
 }
+
+model Barberia {
+  id Int @id @default(autoincrement())
+  nombre String
+  direccion String
+  telefono String
+  barberiacol String
+  usuario Usuario? @relation(fields: [usuarioId], references: [id])
+  usuarioId Int?
+  encuesta Encuesta[]
+  servicio Servicio[]
+  cita Cita[]
+}
+
+model Encuesta {
+  id Int @id @default(autoincrement())
+  puntuacion String
+  comentarios String
+  usuario Usuario? @relation(fields: [usuarioId], references: [id])
+  usuarioId Int?
+  barberia Barberia? @relation(fields: [babrberiId], references: [id])
+  babrberiId Int?
+}
+model Servicio{
+  id Int @id @default(autoincrement())
+  descripcion String
+  precio Decimal
+  barberia Barberia? @relation(fields: [babrberiId], references: [id])
+  babrberiId Int?
+  cita Cita[]
+}
+model Cita{
+  id Int @id @default(autoincrement())
+  usuario Usuario? @relation(fields: [usuarioId], references: [id])
+  usuarioId Int?
+  fecha DateTime
+  hora DateTime
+  barberia Barberia? @relation(fields: [babrberiId], references: [id])
+  babrberiId Int?
+  servicio Servicio? @relation(fields: [servicioId],references: [id])
+  servicioId Int?
+}
+
+// CUENTA->USUARIO (REMPLAZA CLIENTE) 
