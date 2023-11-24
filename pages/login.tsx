@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import '../styles/globals.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -31,34 +30,48 @@ const Login = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-800" style={{ backgroundImage: "url('/image-1.png')" }}>
-            <div className="max-w-md w-full space-y-8 p-10 bg-gray rounded-lg shadow-lg">
-                <div>
-                    <h2 className="mt-6 text-5xl text-center">
-                        The Cave
-                    </h2>
-                </div>
-                <div>
-                    <p className="mt-6 text-l">
-                        Inicia sesion para acceder a todas las opciones disponibles
+
+        <div className="flex flex-col justify-center items-center min-h-screen bg-black text-white" style={{ backgroundImage: "url('/image-1.png')" }}>
+            <div className='absolute top-0 bottom-0 bg-black opacity-70 w-full z-[0]'>
+            </div>
+            <h2 className="mt-6 text-center text-[64px] font-semibold text-white z-[1]">
+                The Cave
+            </h2>
+            <div className="max-w-md w-full space-y-8 p-10 bg-cave-gray/60 rounded-lg shadow-lg z-[1] mt-5">
+                <div className="rounded-md flex flex-col gap-5">
+                    <p className='font-thin'>
+                        Inicia sesión para acceder a todas las opciones disponibles.
                     </p>
-                </div>
-                <div className="rounded-md shadow-sm">
                     <div>
                         <label htmlFor="username" className="sr-only">Nombre de usuario</label>
-                        <input onChange={(e) => setUsername(e.target.value)} id="username" name="username" type="text" autoComplete="username" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Nombre de usuario" />
+                        <input
+                            onChange={(e) => setUsername(e.target.value)}
+                            id="username"
+                            name="username"
+                            type="text"
+                            autoComplete="username"
+                            required
+                            className="appearance-none bg-cave-gray border border-gray-400 p-2 rounded-md text-white w-full focus:border-cave-brown outline-none"
+                            placeholder="Nombre de usuario" />
                     </div>
                     <div>
                         <label htmlFor="password" className="sr-only">Contraseña</label>
-                        <input onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Contraseña" />
+                        <input
+                            onChange={(e) => setPassword(e.target.value)}
+                            id="password"
+                            name="password"
+                            type="password"
+                            autoComplete="current-password"
+                            required
+                            className="appearance-none bg-cave-gray border border-gray-400 p-2 rounded-md text-white w-full focus:border-cave-brown outline-none"
+                            placeholder="Contraseña" />
                     </div>
                 </div>
                 <div>
-                    <button onClick={handleLogin} className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white  bg-cave-brown ">
+                    <button onClick={handleLogin} className="bg-cave-brown text-[24px] text-white p-2 rounded-md w-full font-thin">
                         Iniciar sesión
                     </button>
                 </div>
-
             </div>
         </div>
     );
