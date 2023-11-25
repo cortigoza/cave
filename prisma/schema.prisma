@@ -35,14 +35,21 @@ model Cliente {
 model Barberia {
   id Int @id @default(autoincrement())
   nombre String
+  about String
+  description String
   direccion String
-  telefono String
+  banner String
+  mosaico1 String
   barberiacol String
+  mosaico2 String
+  mosaico3 String
+  telefono String
   usuario Usuario? @relation(fields: [usuarioId], references: [id])
-  usuarioId Int?
+  usuarioId Int
   encuesta Encuesta[]
   servicio Servicio[]
   cita Cita[]
+  horario Horario[]
 }
 
 model Encuesta {
@@ -51,27 +58,36 @@ model Encuesta {
   comentarios String
   usuario Usuario? @relation(fields: [usuarioId], references: [id])
   usuarioId Int?
-  barberia Barberia? @relation(fields: [babrberiId], references: [id])
-  babrberiId Int?
+  barberia Barberia? @relation(fields: [barberiaId], references: [id])
+  barberiaId Int?
 }
-model Servicio{
+model Servicio {
   id Int @id @default(autoincrement())
-  descripcion String
+  nombre String
+  image String
   precio Decimal
-  barberia Barberia? @relation(fields: [babrberiId], references: [id])
-  babrberiId Int?
+  barberia Barberia? @relation(fields: [barberiaId], references: [id])
+  barberiaId Int?
   cita Cita[]
 }
-model Cita{
+model Cita {
   id Int @id @default(autoincrement())
   usuario Usuario? @relation(fields: [usuarioId], references: [id])
   usuarioId Int?
   fecha DateTime
   hora DateTime
-  barberia Barberia? @relation(fields: [babrberiId], references: [id])
-  babrberiId Int?
+  barberia Barberia? @relation(fields: [barberiaId], references: [id])
+  barberiaId Int?
   servicio Servicio? @relation(fields: [servicioId],references: [id])
   servicioId Int?
+}
+model Horario {
+  id Int @id @default(autoincrement())
+  barberia Barberia @relation(fields: [barberiaId], references: [id])
+  barberiaId Int
+  day String
+  start String
+  end String
 }
 
 // CUENTA->USUARIO (REMPLAZA CLIENTE) 

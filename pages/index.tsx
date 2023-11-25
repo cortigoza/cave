@@ -1,29 +1,135 @@
-import { useRouter } from 'next/router';
+import Link from 'next/link';
+
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import '../styles/globals.css';
+import Header from '@/components/Header';
 
-export default function Index() {
-    const router = useRouter();
+export default function barberShops() {
+    const [data, setData] = useState([])
+    useEffect(() => {
+        const getBarberShops = async () => {
+            fetch('/api/barbershops')
+                .then((res) => res.json())
+                .then((data) => {
+                    setData(data.response)
+                    console.log({ data })
+                });
+        }
+        getBarberShops()
+    }, [])
 
-    const redirectToPage = (path: string) => {
-        router.push(path);
-    };
     return (
         <>
             <Head>
-                <title>The Cave - Elección perfecta de barbería</title>
+                <title>The Cave - Barberías</title>
             </Head>
-            <div className="flex min-h-screen bg-black text-white" style={{ backgroundImage: "url('/image-1.png')" }}>
-                <div className="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-24">
-                    <h1 className="text-4xl font-bold mb-6">Elección perfecta de barbería</h1>
-                    <p className="mb-6">The Cave es el sitio web donde están las mejores barberías de Ciudad 2000</p>
-                    <button className="bg-cave-brown text-white font-bold py-2 px-4 rounded ease-in-out"
-                        onClick={() => redirectToPage("/login")}>
-                        Reservar Ahora
-                    </button>
-                </div>
+            <Header hasBgImage />
+            <div className="flex justify-center w-full flex-wrap gap-10 px-[140px] pt-12 min-h-screen bg-cave-gray text-white">
+                {data.map((item, index) => {
+                    return (
+                        <>
+                            <div className='relative bg-black/70 flex flex-col max-h-[322px] w-[380px] rounded-md' key={index}>
+                                <div className='relative w-[380px] h-[177px]'>
+                                    <Image src={item['banner']} alt={`${item['nombre']} banner`} fill className='object-cover' />
+                                </div>
+                                <div className='px-4 py-4 flex flex-col gap-5'>
+                                    <div>
+                                        <p>{item['nombre']}</p>
+                                        <span>{item['about']} descripcion</span>
+                                    </div>
+                                    <Link
+                                        href={`/barberShop/${item['id']}`}
+                                        className="bg-cave-brown text-white font-thin rounded-md px-6 py-2 self-end">
+                                        ver
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className='relative bg-black/70 flex flex-col max-h-[322px] w-[380px] rounded-md' key={index}>
+                                <div className='relative w-[380px] h-[177px]'>
+                                    <Image src={item['banner']} alt={`${item['nombre']} banner`} fill className='object-cover' />
+                                </div>
+                                <div className='px-4 py-4 flex flex-col gap-5'>
+                                    <div>
+                                        <p>{item['nombre']}</p>
+                                        <span>{item['about']} descripcion</span>
+                                    </div>
+                                    <Link
+                                        href={`/barberShop/${item['id']}`}
+                                        className="bg-cave-brown text-white font-thin rounded-md px-6 py-2 self-end">
+                                        ver
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className='relative bg-black/70 flex flex-col max-h-[322px] w-[380px] rounded-md' key={index}>
+                                <div className='relative w-[380px] h-[177px]'>
+                                    <Image src={item['banner']} alt={`${item['nombre']} banner`} fill className='object-cover' />
+                                </div>
+                                <div className='px-4 py-4 flex flex-col gap-5'>
+                                    <div>
+                                        <p>{item['nombre']}</p>
+                                        <span>{item['about']} descripcion</span>
+                                    </div>
+                                    <Link
+                                        href={`/barberShop/${item['id']}`}
+                                        className="bg-cave-brown text-white font-thin rounded-md px-6 py-2 self-end">
+                                        ver
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className='relative bg-black/70 flex flex-col max-h-[322px] w-[380px] rounded-md' key={index}>
+                                <div className='relative w-[380px] h-[177px]'>
+                                    <Image src={item['banner']} alt={`${item['nombre']} banner`} fill className='object-cover' />
+                                </div>
+                                <div className='px-4 py-4 flex flex-col gap-5'>
+                                    <div>
+                                        <p>{item['nombre']}</p>
+                                        <span>{item['about']} descripcion</span>
+                                    </div>
+                                    <Link
+                                        href={`/barberShop/${item['id']}`}
+                                        className="bg-cave-brown text-white font-thin rounded-md px-6 py-2 self-end">
+                                        ver
+                                    </Link>
+                                </div>
+                            </div>
 
+                            <div className='relative bg-black/70 flex flex-col max-h-[322px] w-[380px] rounded-md' key={index}>
+                                <div className='relative w-[380px] h-[177px]'>
+                                    <Image src={item['banner']} alt={`${item['nombre']} banner`} fill className='object-cover' />
+                                </div>
+                                <div className='px-4 py-4 flex flex-col gap-5'>
+                                    <div>
+                                        <p>{item['nombre']}</p>
+                                        <span>{item['about']} descripcion</span>
+                                    </div>
+                                    <Link
+                                        href={`/barberShop/${item['id']}`}
+                                        className="bg-cave-brown text-white font-thin rounded-md px-6 py-2 self-end">
+                                        ver
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className='relative bg-black/70 flex flex-col max-h-[322px] w-[380px] rounded-md' key={index}>
+                                <div className='relative w-[380px] h-[177px]'>
+                                    <Image src={item['banner']} alt={`${item['nombre']} banner`} fill className='object-cover' />
+                                </div>
+                                <div className='px-4 py-4 flex flex-col gap-5'>
+                                    <div>
+                                        <p>{item['nombre']}</p>
+                                        <span>{item['about']} descripcion</span>
+                                    </div>
+                                    <Link
+                                        href={`/barber/${item['id']}`}
+                                        className="bg-cave-brown text-white font-thin rounded-md px-6 py-2 self-end">
+                                        ver
+                                    </Link>
+                                </div>
+                            </div>
+                        </>
+
+                    )
+                })}
             </div>
         </>
     )

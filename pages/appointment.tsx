@@ -1,5 +1,4 @@
 import Authentication from '../components/Authentication';
-import '../styles/globals.css';
 
 function AppointMent() {
   return (
@@ -14,3 +13,4 @@ function AppointMent() {
 }
 
 export default AppointMent;
+
