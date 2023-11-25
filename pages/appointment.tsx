@@ -1,5 +1,4 @@
 import Authentication from '../components/Authentication';
-import '../styles/globals.css';
 
 function AppointMent() {
   return (
