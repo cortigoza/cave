@@ -1,8 +1,6 @@
+import { BarberDataTypes } from '@/hooks/useBarberData';
 import BarberModel from '../models/BarberModel';
 
-interface data {
-    id: number
-}
 class BarberController {
     static async listBarber() {
         try {
@@ -14,13 +12,21 @@ class BarberController {
         }
     }
     static async searchBarber(data: string) {
-       
         try {
             const result = BarberModel.getBarberById(data)
             return result;
         } catch (error) {
             console.error('Error buscando barberia:', error);
             throw error;
+        }
+    }
+    static async createBarber(data: BarberDataTypes) {
+        try {
+            const result = BarberModel.createBarber(data)
+            return result
+        } catch (error) {
+            console.error('Error creando barberia: ', error)
+            throw error
         }
     }
 }

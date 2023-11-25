@@ -1,6 +1,5 @@
+import BarberController from '@/controllers/BarberController';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import BarberController from '../../controllers/BarberController';
-
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {

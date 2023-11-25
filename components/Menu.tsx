@@ -53,7 +53,7 @@ export default function Menu() {
               <li tabIndex={isOpen ? 0 : -1} className={liStyle}>
                 <button
                   onClick={handleCrearBarberiaClick}
-                  className="mb-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-gray-100"
+                  className="text-xl"
                 >
                   Crear barbería
                 </button>
