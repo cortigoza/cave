@@ -7,15 +7,14 @@ import useBarberData from "@/hooks/useBarberData";
 
 export default function CreateBarber() {
     const { formData, clearData } = useBarberData('all')
-    const handleCreate = () => {
-        console.log({ formData })
+    const handleEdit = () => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ data: formData })
         };
 
-        fetch(`/api/barbershop`, requestOptions)
+        fetch(`/api/barbershop/edit`, requestOptions)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data.response)
@@ -50,7 +49,7 @@ export default function CreateBarber() {
 
                 <button
                     className="bg-cave-gray py-6 px-4 rounded-md w-full mt-10 text-2xl font-medium"
-                    onClick={handleCreate}
+                    onClick={handleEdit}
                 >
                     Crear Barberia
                 </button>

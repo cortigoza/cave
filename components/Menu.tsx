@@ -3,6 +3,8 @@ import { useState } from "react";
 import MenuIcon from "./icons/MenuIcon";
 import MenuCloseIcon from "./icons/MenuCloseIcon";
 import { useRouter } from "next/router";
+import Disclosure from "./Disclosure";
+import Link from "next/link";
 
 const liStyle = 'border-b border-cave-gray py-3 mb-5'
 
@@ -66,6 +68,17 @@ export default function Menu() {
               >
                 Home
               </button>
+            </li>
+            <li>
+              <Disclosure title="Mis Barberias">
+                <ul>
+                  <li>
+                    <Link href={'/barber/edit/3'}>
+                      Ebanos Barber Shop
+                    </Link>
+                  </li>
+                </ul>
+              </Disclosure>
             </li>
             <li tabIndex={isOpen && !autenticado ? 1 : -1 || isOpen && autenticado ? 2 : -1} className={liStyle}>
               <button

@@ -31,13 +31,22 @@ export type BarberDataTypes = {
 	schedule: ScheduleData
 	all: AboutData & ServicesData & HeadersData & ScheduleData
 }
+type ReturnType<T extends keyof BarberDataTypes> = {
+	changeData: (data: BarberDataTypes[T]) => void;
+	formData: BarberDataTypes[T]
+	clearData: () => void
+}
 
-export default function useBarberData<T extends keyof BarberDataTypes>(formName: T): { changeData: (data: BarberDataTypes[T]) => void; formData: BarberDataTypes[T] } {
+export default function useBarberData<T extends keyof BarberDataTypes>(formName: T): ReturnType<T> {
 	const [formData, setFormData] = useState<BarberDataTypes[T]>({} as BarberDataTypes[T])
 
 	const changeData = (data: BarberDataTypes[T]) => {
 		localStorage.setItem(formName, JSON.stringify({ ...formData, ...data }))
 		setFormData({ ...formData, ...data })
+	}
+
+	const clearData = () => {
+		localStorage.clear()
 	}
 
 	useEffect(() => {
@@ -66,5 +75,5 @@ export default function useBarberData<T extends keyof BarberDataTypes>(formName:
 		}
 	}, [])
 
-	return { formData, changeData }
+	return { formData, changeData, clearData }
 }
